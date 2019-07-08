@@ -17,8 +17,9 @@ from django.contrib import admin
 from django.urls import path
 from message.views import getform
 
+import xadmin
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('xadmin/', xadmin.site.urls),
     path('form/',getform,name='go_form')
 ]
