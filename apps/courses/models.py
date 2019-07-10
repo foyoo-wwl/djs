@@ -8,7 +8,7 @@ class Course(models.Model):
     name = models.CharField(max_length=500,verbose_name='课程名称')
     desc = models.CharField(max_length=300,verbose_name='课程描述')
     detail = models.TextField(verbose_name='课程详情')
-    degree = models.CharField(choices=(('cj','初级') , ('zj','中级'),('gj','高级')),max_length=30)
+    degree = models.CharField(choices=(('cj','初级') , ('zj','中级'),('gj','高级')),max_length=30,verbose_name='难度')
     learn_times = models.IntegerField(default=0,verbose_name='学习时长(分钟数)')
     student = models.IntegerField(default=0,verbose_name='学习人数')
     fav_num = models.IntegerField(default=0,verbose_name='收藏人数')
@@ -20,6 +20,9 @@ class Course(models.Model):
     class Meta:
         verbose_name = '课程'
         verbose_name_plural = verbose_name
+
+    def __str__(self):
+        return self.name
 
 
 class Lesson(models.Model):
@@ -46,7 +49,6 @@ class CourseResourse(models.Model):
     name = models.CharField(max_length=100,verbose_name='视频名')
     add_time = models.DateTimeField(default=datetime.now,verbose_name='添加时间')
     download = models.FileField(upload_to='course/resourse/%y/%m',verbose_name='资源文件',max_length=100)
-    add_time = models.DateTimeField(default=datetime.now,verbose_name='添加时间')
 
     class Meta:
         verbose_name = '课程资源'

@@ -89,7 +89,10 @@ DATABASES = {
         'NAME': 'db_name',
         'USER':'root',
         'PASSWORD':'zaijian4114',
-        'HOST':'127.0.0.1'
+        'HOST':'127.0.0.1',
+        'OPTIONS': {
+            "init_command": "SET foreign_key_checks = 0;",
+        }
     }
 }
 
